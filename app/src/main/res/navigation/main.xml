@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/usersFragment">
+
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.mosaleh.sparkbanking.ui.UsersFragment"
+        android:label="UsersFragment" >
+        <action
+            android:id="@+id/action_usersFragment_to_sendMoneyFragment3"
+            app:destination="@id/sendMoneyFragment" >
+            <argument
+                android:name="user"
+                app:argType="com.mosaleh.sparkbanking.model.User" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.mosaleh.sparkbanking.ui.TransactionFragment"
+        android:label="TransactionFragment" />
+    <fragment
+        android:id="@+id/sendMoneyFragment"
+        android:name="com.mosaleh.sparkbanking.ui.SendMoneyFragment"
+        android:label="SendMoneyFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.mosaleh.sparkbanking.model.User" />
+        <action
+            android:id="@+id/action_sendMoneyFragment_to_successfulTransactionFragment"
+            app:destination="@id/successfulTransactionFragment" />
+        <action
+            android:id="@+id/action_sendMoneyFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulTransactionFragment"
+        android:name="com.mosaleh.sparkbanking.ui.SuccessfulTransactionFragment"
+        android:label="fragment_successful_transaction"
+        tools:layout="@layout/fragment_successful_transaction" />
+</navigation>
